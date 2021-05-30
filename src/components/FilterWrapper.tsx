@@ -3,6 +3,9 @@ import {useSelector} from "react-redux";
 import {useFilterContext} from "../utilities/filterContext";
 import {uniqBy} from 'lodash';
 
+import CircleSign from "./CircleSign";
+import RefreshSign from "./RefreshSign";
+
 import Select from 'react-select';
 
 export default () => {
@@ -30,27 +33,39 @@ export default () => {
     setSelectedCampaigns(selectedOptions);
   }
 
-  console.log(availableCampaigns, availableDataSources)
-
   return <div className={'filter-wrapper'}>
     <header>
       Filter dimension values
     </header>
-    <Select value={selectedDataSources}
-            options={availableDataSources}
-            onChange={handleSelectedDataSourceChange}
-            placeholder={'All'}
-            isClearable={false}
-            isMulti
-            isSearchable
-    />
-    <Select value={selectedCampaigns}
-            options={availableCampaigns}
-            onChange={handleSelectedCampaignChange}
-            placeholder={'All'}
-            isClearable={false}
-            isMulti
-            isSearchable
-    />
+    <div className={'filter'}>
+      <span className={'label'}>
+        <label>Datasource</label>
+        <CircleSign />
+        <RefreshSign />
+      </span>
+      <Select value={selectedDataSources}
+              options={availableDataSources}
+              onChange={handleSelectedDataSourceChange}
+              placeholder={'All'}
+              isClearable={false}
+              isMulti
+              isSearchable
+      />
+    </div>
+    <div className={'filter'}>
+      <span className={'label'}>
+        <label>Campaign</label>
+        <CircleSign />
+        <RefreshSign />
+      </span>
+      <Select value={selectedCampaigns}
+              options={availableCampaigns}
+              onChange={handleSelectedCampaignChange}
+              placeholder={'All'}
+              isClearable={false}
+              isMulti
+              isSearchable
+      />
+    </div>
   </div>
 };

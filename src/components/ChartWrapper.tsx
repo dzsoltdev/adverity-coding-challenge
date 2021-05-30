@@ -1,5 +1,9 @@
 import React from "react";
 
-export default () => {
-  return <div className={'chart-wrapper'}>CChart</div>
+export default (props: any) => {
+  const {data}= props;
+
+  return <div className={'chart-wrapper'}>
+
+  </div>
 };

@@ -36,7 +36,7 @@ export default () => {
   }}>
     <div className={'dashboard'}>
       <FilterWrapper />
-      <ChartWrapper />
+      <ChartWrapper data={filteredData} />
     </div>
   </FilterContext.Provider>
 };

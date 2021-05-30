@@ -1,3 +1,6 @@
+@import "circleSign";
+@import "refreshSign";
+
 .filter-wrapper {
   flex: 1;
   background-color: #c2e0ea;
@@ -6,5 +9,17 @@
   header {
     font-size: 24px;
     font-weight: 300;
+  }
+
+  .filter {
+    margin: 16px 0;
+    .label {
+      display: flex;
+      margin-bottom: 16px;
+
+      > *:not(:last-child) {
+        margin-right: 8px;
+      }
+    }
   }
 }
