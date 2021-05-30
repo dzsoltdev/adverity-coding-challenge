@@ -1,5 +1,5 @@
 export interface DashboardState {
-  id: string | null
+  data: Array<any>
 }
 
 export enum dashboardActionTypes {

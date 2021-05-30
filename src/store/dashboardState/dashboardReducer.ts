@@ -2,14 +2,14 @@ import {DashboardState, dashboardActionTypes} from './dashboardStateTypes';
 import {ActionType} from "../index";
 
 const initialState: DashboardState = {
-  id: null
+  data: []
 };
 
 const dashboardReducer = (state = initialState, action: ActionType) => {
   switch (action.type) {
     case dashboardActionTypes.GET_DASHBOARD_DATA: {
       return {
-        id: action.payload
+        data: action.payload
       };
     }
     default:
