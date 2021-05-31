@@ -1,0 +1,11 @@
+.button {
+  cursor: pointer;
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: aliceblue;
+
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
