@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@devexpress/dx-react-chart": "^2.7.5",
+    "@devexpress/dx-react-chart-material-ui": "^2.7.5",
     "@reduxjs/toolkit": "^1.5.1",
     "axios": "^0.21.1",
     "classnames": "^2.3.1",
     "lodash": "^4.17.21",
     "react": "^17.0.2",
-    "react-chartjs-2": "^3.0.3",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",
     "react-select": "^4.3.1",
@@ -23,8 +24,7 @@
     "@types/react-redux": "^7.1.16",
     "@types/react-select": "^4.0.15",
     "node-sass": "^6.0.0",
-    "react-scripts": "4.0.3",
-    "redux-devtools": "^3.7.0"
+    "react-scripts": "4.0.3"
   },
   "scripts": {
     "start": "react-scripts start",

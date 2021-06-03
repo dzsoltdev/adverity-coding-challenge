@@ -5,6 +5,7 @@ import {FilterContext} from "../utilities/filterContext";
 
 import FilterWrapper from "../components/FilterWrapper";
 import ChartWrapper from "../components/ChartWrapper";
+import {uniqBy} from "lodash";
 
 export default () => {
   const dispatch = useDispatch();
@@ -17,6 +18,14 @@ export default () => {
 
   const [selectedDataSources, setSelectedDataSources] = useState<Array<string>>([]);
   const [selectedCampaigns, setSelectedCampaigns] = useState<Array<string>>([]);
+
+  const [availableDataSources, setAvailableDataSources] = useState<Array<any>>([]);
+  const [availableCampaigns, setAvailableCampaigns] = useState<Array<any>>([]);
+
+  useEffect(() => {
+    setAvailableDataSources(uniqBy(data.filter((item: any) => !!item.Datasource).map((item: any) => ({value: item.Datasource, label: item.Datasource})), (item: any) => item.value));
+    setAvailableCampaigns(uniqBy(data.filter((item: any) => !!item.Campaign).map((item: any) => ({value: item.Campaign, label: item.Campaign})), (item: any) => item.value));
+  }, [data]);
 
   const [filteredData, setFilteredData] = useState<Array<any>>(data);
 
@@ -33,7 +42,8 @@ export default () => {
   }, [data, selectedDataSources, selectedCampaigns])
 
   return <FilterContext.Provider value={{
-    setSelectedDataSources, selectedCampaigns, selectedDataSources, setSelectedCampaigns
+    setSelectedDataSources, selectedCampaigns, selectedDataSources, setSelectedCampaigns,
+    availableDataSources, availableCampaigns, setAvailableDataSources, setAvailableCampaigns
   }}>
     <div className={'dashboard'}>
       <FilterWrapper />

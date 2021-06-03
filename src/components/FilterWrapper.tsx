@@ -10,26 +10,19 @@ import RefreshSign from "./RefreshSign";
 import Select from 'react-select';
 
 export default () => {
-  const data = useSelector((state: any) => state.dashboard.data);
   const {
     setSelectedDataSources,
     selectedCampaigns,
     selectedDataSources,
-    setSelectedCampaigns
+    setSelectedCampaigns,
+    availableDataSources,
+    availableCampaigns
   } = useFilterContext();
-
-  const [availableDataSources, setAvailableDataSources] = useState<Array<any>>([]);
-  const [availableCampaigns, setAvailableCampaigns] = useState<Array<any>>([]);
 
   const [selectedDataSourcesToApply, setSelectedDataSourcesToApply] = useState<Array<any>>(selectedDataSources);
   const [selectedCampaignsToApply, setSelectedCampaignsToApply] = useState<Array<any>>(selectedCampaigns);
 
   const [isFilterDirty, setFilterDirty] = useState(false);
-
-  useEffect(() => {
-    setAvailableDataSources(uniqBy(data.map((item: any) => ({value: item.Datasource, label: item.Datasource})), (item: any) => item.value));
-    setAvailableCampaigns(uniqBy(data.map((item: any) => ({value: item.Campaign, label: item.Campaign})), (item: any) => item.value));
-  }, [data]);
 
   const handleSelectedDataSourceChange = (selectedOptions: any) => {
     setSelectedDataSourcesToApply(selectedOptions);

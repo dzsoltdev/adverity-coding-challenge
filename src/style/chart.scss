@@ -1,8 +1,72 @@
 .chart-wrapper {
   flex: 4;
 
+  display: flex;
+  flex-direction: column;
+
   padding: 16px;
   margin: 16px;
   box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.35);
   border-radius: 4px;
+
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    span:first-child {
+      margin-right: 8px;
+      &::after {
+        content: ';';
+      }
+    }
+  }
+
+  .chart-container {
+    flex: 1;
+    position: relative;
+
+    > div {
+      margin: 0 32px;
+    }
+
+    label.axis-label {
+      position: absolute;
+      top: 50%;
+
+      &.y1 {
+        transform: rotate(-90deg) translateX(50%);
+      }
+
+      &.y2 {
+        transform: rotate(90deg) translateX(-50%);
+        right: -24px;
+      }
+    }
+  }
+
+  .legends {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 8px 0;
+
+    .legend {
+      position: relative;
+      margin: 0 16px 0 32px;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: -32px;
+        transform: translateY(-50%);
+        background-color: var(--color);
+        width: 24px;
+        height: 3px;
+      }
+    }
+  }
 }
