@@ -1,0 +1,2 @@
+You should install the dependencies with using "npm install --legacy-peer-deps"
+because one of the used package is not compaitble with the primarily installed react version

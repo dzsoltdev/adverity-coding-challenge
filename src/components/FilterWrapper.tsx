@@ -61,7 +61,7 @@ export default () => {
         options={availableDataSources}
         searchable={true}
         autofocus
-        clearable={false}
+        clearable={true}
         simpleValue
         value={selectedDataSourcesToApply.join(',')}
       />
@@ -82,7 +82,7 @@ export default () => {
         options={availableCampaigns}
         searchable={true}
         autofocus
-        clearable={false}
+        clearable={true}
         simpleValue
         value={selectedCampaignsToApply.join(',')}
       />
