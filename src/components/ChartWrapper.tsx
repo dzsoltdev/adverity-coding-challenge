@@ -135,7 +135,7 @@ const getLabelForDataSource = (selectedItems: Array<any>, defaultLabel: string, 
     return `All ${defaultLabel}s`;
   }
 
-  let retVal = selectedItems.map((item: any) => `"${item.value}"`);
+  let retVal = selectedItems.map((item: any) => `"${item}"`);
 
   if(retVal.length > 1) {
     return `${defaultLabel } ${retVal.slice(0, retVal.length - 1).join(', ')} and ${retVal.pop()}`;

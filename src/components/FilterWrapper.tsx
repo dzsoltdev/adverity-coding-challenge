@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from "react";
-import {useSelector} from "react-redux";
 import {useFilterContext} from "../utilities/filterContext";
-import {uniqBy, isEqual} from 'lodash';
+import {isEqual} from 'lodash';
 import classNames from "classnames";
 
 import CircleSign from "./CircleSign";
 import RefreshSign from "./RefreshSign";
 
-import Select from 'react-select';
+import {default as VSelect} from "react-virtualized-select";
 
 export default () => {
   const {
@@ -25,11 +24,11 @@ export default () => {
   const [isFilterDirty, setFilterDirty] = useState(false);
 
   const handleSelectedDataSourceChange = (selectedOptions: any) => {
-    setSelectedDataSourcesToApply(selectedOptions);
+    setSelectedDataSourcesToApply(selectedOptions.length > 0 ? selectedOptions.split(',') : []);
   }
 
   const handleSelectedCampaignChange = (selectedOptions: any) => {
-    setSelectedCampaignsToApply(selectedOptions);
+    setSelectedCampaignsToApply(selectedOptions.length > 0 ? selectedOptions.split(',') : []);
   }
 
   useEffect(() => {
@@ -52,13 +51,19 @@ export default () => {
         <CircleSign />
         <RefreshSign />
       </span>
-      <Select value={selectedDataSourcesToApply}
-              options={availableDataSources}
-              onChange={handleSelectedDataSourceChange}
-              placeholder={'All'}
-              isClearable={false}
-              isMulti
-              isSearchable
+      <VSelect
+        valueKey='value'
+        labelKey='label'
+        backspaceToRemoveMessage={''}
+        placeholder={'All'}
+        multi={true}
+        onChange={handleSelectedDataSourceChange}
+        options={availableDataSources}
+        searchable={true}
+        autofocus
+        clearable={false}
+        simpleValue
+        value={selectedDataSourcesToApply.join(',')}
       />
     </div>
     <div className={'filter'}>
@@ -67,13 +72,19 @@ export default () => {
         <CircleSign />
         <RefreshSign />
       </span>
-      <Select value={selectedCampaignsToApply}
-              options={availableCampaigns}
-              onChange={handleSelectedCampaignChange}
-              placeholder={'All'}
-              isClearable={false}
-              isMulti
-              isSearchable
+      <VSelect
+        valueKey='value'
+        labelKey='label'
+        backspaceToRemoveMessage={''}
+        placeholder={'All'}
+        multi={true}
+        onChange={handleSelectedCampaignChange}
+        options={availableCampaigns}
+        searchable={true}
+        autofocus
+        clearable={false}
+        simpleValue
+        value={selectedCampaignsToApply.join(',')}
       />
     </div>
 
